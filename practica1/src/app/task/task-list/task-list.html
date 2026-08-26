@@ -1,0 +1,4 @@
+<input type="text" placeholder="Buscar tarea..." [value]="search()" (input)="search.set($event.target.value)">
+
+<p>{{pending()}} pendientes de {{filtered().length}}</p>
+
