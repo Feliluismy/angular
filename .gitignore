@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.env
+venv/
+*.log
+#esto en un futuro lo borro
