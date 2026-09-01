@@ -2,3 +2,11 @@
 
 <p>{{pending()}} pendientes de {{filtered().length}}</p>
 
+@for (task of filtered(); track task.id){
+    <div class = "row"
+    [class.done] = "task.status === 'done'"
+    [class.active] = "task.status === 'in-progress'"
+    click = "toggle(task)"
+    (keydown.enter) = "toggle(task)"
+    tobindex = "0"></div>
+}
