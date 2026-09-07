@@ -1,4 +1,8 @@
-<input type="text" placeholder="Buscar tarea..." [value]="search()" (input)="search.set($event.target.value)">
+<h2>Tareas del Sprint:</h2>
+<input type="text"
+placeholder="Buscar tarea..."
+[value]="search()"
+(input)="search.set($event.target.value)">
 
 <p>{{pending()}} pendientes de {{filtered().length}}</p>
 
@@ -13,4 +17,7 @@
     <span class="badge">{{label(task.status)}}/</span>
     <span class="badge">P{{task.priority}}</span>
 </div>
+}
+@empty{
+    <p class="empty">Sin resultados</p>
 }
