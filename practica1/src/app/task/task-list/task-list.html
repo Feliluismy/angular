@@ -8,5 +8,9 @@
     [class.active] = "task.status === 'in-progress'"
     click = "toggle(task)"
     (keydown.enter) = "toggle(task)"
-    tobindex = "0"></div>
+    tobindex = "0">
+    <span class="title">{{task.title}}/</span>
+    <span class="badge">{{label(task.status)}}/</span>
+    <span class="badge">P{{task.priority}}</span>
+</div>
 }

@@ -13,7 +13,9 @@ export class TaskList {
     task = signal<TaskModel[]>(
         [
             {id: 1, title: 'Cerrarbalance Q3', status:'pending', priority:2},
-            {id: 1, title: 'Revisar prs', status:'in-progress', priority:2}
+            {id: 2, title: 'Revisar prs', status:'in-progress', priority:1},
+            {id: 3, title: 'Deploy v2', status:'done', priority:3},
+            {id: 3, title: 'Armar presentacion', status:'in-progress', priority:1}
         ]
     );
 
