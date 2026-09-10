@@ -7,7 +7,7 @@ placeholder="Buscar tarea..."
 <p>{{pending()}} pendientes de {{filtered().length}}</p>
 
 @for (task of filtered(); track task.id){
-    <div class = "row"
+    <!--<div class = "row"
     [class.done] = "task.status === 'done'"
     [class.active] = "task.status === 'in-progress'"
     click = "toggle(task)"
@@ -16,7 +16,14 @@ placeholder="Buscar tarea..."
     <span class="title">{{task.title}}/</span>
     <span class="badge">{{label(task.status)}}/</span>
     <span class="badge">P{{task.priority}}</span>
-</div>
+</div>-->
+    <app-task-card
+        [tarea] = "t"
+        days = 3
+        cardsize = "lg"
+        (done) = "markdone($event)"
+        delete = "remove($event)"
+        />
 }
 @empty{
     <p class="empty">Sin resultados</p>

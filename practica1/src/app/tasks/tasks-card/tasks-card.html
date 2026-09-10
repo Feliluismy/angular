@@ -1,0 +1,11 @@
+<article class="card" [class.compact] = "compact()">
+    <h3>{{task().title}}</h3>
+    <p>Estado : {{task().status}}
+        prioridad : {{task().priority}} {{days}} dias
+
+    </p>
+    @if(task.status !== 'done'){
+        <button type="(click) = onDone()">Marcar Echo</button>
+    }
+    <button type="(click) = onDelete()">Marcar Echo</button>
+</article>

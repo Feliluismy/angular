@@ -1,6 +1,11 @@
-import { Component, signal, computed} from "@angular/core";
+import { Component, signal, computed, inject} from "@angular/core";
+import { RouterLink } from "@angular/router";
 import { TaskModel } from "../task.model";
 import { statusLabel ,nextStatus} from "../task-status";
+import { Router } from "@angular/router";
+import { TasksCard } from "../../tasks/tasks-card/tasks-card";
+import { TaskStore } from "../../task.store";
+
 
 @Component({
     imports : [],
@@ -10,7 +15,18 @@ import { statusLabel ,nextStatus} from "../task-status";
 })
 
 export class TaskList {
-    task = signal<TaskModel[]>(
+    private readonly store = inject(TaskStore)
+     filter = signal('');
+
+     task = computed(() => {
+        const q = this.filter().toLowerCase()
+     })
+
+     remove(id:number){
+        this.store.remove(id)
+     }
+
+    /*task = signal<TaskModel[]>(
         [
             {id: 1, title: 'Cerrarbalance Q3', status:'pending', priority:2},
             {id: 2, title: 'Revisar prs', status:'in-progress', priority:1},
@@ -31,6 +47,6 @@ export class TaskList {
     //toggle hace referencia a una actualizacion parcial
 
     toggle(task:TaskModel){
-    this.task.update(list => list.map(t=>t.id === task.id ? {...t,status:nextStatus(t.status)}:t))
-  }
+    this.task.update(list => list.map(t=>t.id === task.id ? {...t,status:nextStatus(t.status)}:t));
+  }*/
 }

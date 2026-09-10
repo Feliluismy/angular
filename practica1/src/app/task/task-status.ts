@@ -1,4 +1,5 @@
-import { TaskStatus } from "./task.model";
+export type TaskStatus = 'pending' | 'in-progress' | 'done';
+ 
 
 export function statusLabel(status:TaskStatus):string{
     if (status == 'pending') return 'Pendiente';

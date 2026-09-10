@@ -1,5 +1,4 @@
-//los estados posibles de una tarea son: pendientes, en proceso y completa
-export type TaskStatus = 'pending' | 'in-progress' | 'done'
+import { TaskStatus} from './task-status'
 
 //entidad central del domino
 export interface TaskModel{
