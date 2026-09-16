@@ -1,5 +1,6 @@
 import { Component, input, numberAttribute, output } from '@angular/core';
-import { TasksModel } from '../tasks-model/tasks-model';
+import { statusLabel } from '../task-status';
+import { TaskModel } from '../tasks.model';
 
 @Component({
   imports: [],
@@ -9,7 +10,7 @@ import { TasksModel } from '../tasks-model/tasks-model';
 })
 export class TasksCard {
 
-  task = input.required<TasksModel>();
+  task = input.required<TaskModel>();
 
   compact = input(false);
 
@@ -17,11 +18,11 @@ export class TasksCard {
 
   size = input('md', {alias:'cardSize'});
 
-  done = output<TasksModel>();
+  done = output<TaskModel>();
 
   deleted = output<number>();
 
-  onDone().{this.done.emit(this.task)}
-
-  outDone().{this.delete.emit(this.task)}
+  onDone(){this.done.emit(this.task());}
+  
+  onDelete(){this.deleted.emit(this.task().id);}
 }

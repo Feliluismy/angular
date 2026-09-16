@@ -1,11 +1,27 @@
-<article class="card" [class.compact] = "compact()">
-    <h3>{{task().title}}</h3>
-    <p>Estado : {{task().status}}
-        prioridad : {{task().priority}} {{days}} dias
+<article class="card" [class.compact]="compact()">
+    <h3>{{ task().title }}</h3>
 
+    <p class="info">
+        <span class="badge">
+            Estado: {{ label(task().status) }}
+        </span>
+
+        <span class="priority">
+            P{{ task().priority }}
+        </span>
+
+        <span class="days">
+            {{ days() }} días
+        </span>
     </p>
-    @if(task.status !== 'done'){
-        <button type="(click) = onDone()">Marcar Echo</button>
+
+    @if (task().status !== 'done') {
+        <button type="button" (click)="onDone()">
+            Marcar hecho
+        </button>
     }
-    <button type="(click) = onDelete()">Marcar Echo</button>
+
+    <button type="button" (click)="onDelete()">
+        Eliminar
+    </button>
 </article>

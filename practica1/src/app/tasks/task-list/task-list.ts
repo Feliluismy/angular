@@ -1,30 +1,35 @@
 import { Component, signal, computed, inject} from "@angular/core";
 import { RouterLink } from "@angular/router";
-import { TaskModel } from "../task.model";
+import { TaskModel } from "../tasks.model";
 import { statusLabel ,nextStatus} from "../task-status";
-import { Router } from "@angular/router";
 import { TasksCard } from "../../tasks/tasks-card/tasks-card";
 import { TaskStore } from "../../task.store";
 
 
 @Component({
-    imports : [],
+    imports : [RouterLink, TasksCard],
     selector :'app-task-list',
     styleUrl :'./task-list.css',
     templateUrl :'./task-list.html'
 })
 
 export class TaskList {
+
     private readonly store = inject(TaskStore)
-     filter = signal('');
 
-     task = computed(() => {
-        const q = this.filter().toLowerCase()
-     })
+    filter = signal('');
 
-     remove(id:number){
+    task = computed(() => {//a medida que vamos escribiendo, esto va retornando
+        const q = this.filter().toLowerCase();
+        return this.store.tasks().filter(t => t.title.toLowerCase().includes(q));
+    })
+
+    markDone(task:TaskModel){
+        this.store.update(task.id, {status:'done'})
+    }
+    remove(id:number){
         this.store.remove(id)
-     }
+    }
 
     /*task = signal<TaskModel[]>(
         [

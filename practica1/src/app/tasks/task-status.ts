@@ -1,3 +1,4 @@
+//Los estados posibles de una tarea son: pendiente, en progreso y completada.
 export type TaskStatus = 'pending' | 'in-progress' | 'done';
  
 

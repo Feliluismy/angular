@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , computed, inject, input, numberAttribute} from '@angular/core';
 
 @Component({
   imports: [],
